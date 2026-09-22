@@ -7,30 +7,162 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
-<style>
-:root{--accent:#4ade80;--accent-dark:#1f7a4a;--bg-1:#0e2618;--bg-2:#163523;--light:#fff;--gray:#c7d6cc;--leaf-bg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cg fill='none' stroke='%234ade80' stroke-width='2' opacity='0.07'%3E%3Cpath d='M40 150 C10 120 10 60 40 30 C70 60 70 120 40 150 Z'/%3E%3Cline x1='40' y1='150' x2='40' y2='35'/%3E%3Cpath d='M140 120 C115 100 115 65 140 45 C165 65 165 100 140 120 Z'/%3E%3Cline x1='140' y1='120' x2='140' y2='50'/%3E%3Cpath d='M100 170 C85 155 85 130 100 115 C115 130 115 155 100 170 Z'/%3E%3Cline x1='100' y1='170' x2='100' y2='120'/%3E%3C/g%3E%3C/svg%3E");--xavier-bg:#0b1f3f;--xavier-line:#5b9bf0;--crest-bg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg fill='none' stroke='%235b9bf0' stroke-width='2' opacity='0.09'%3E%3Cpath d='M100 40 L70 55 L70 100 C70 130 85 150 100 160 C115 150 130 130 130 100 L130 55 Z'/%3E%3Crect x='92' y='4' width='16' height='16' transform='rotate(45 100 12)'/%3E%3C/g%3E%3C/svg%3E");--ocean-bg:#04405e;--ocean-accent:#38bdf8;--wave-bg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='100'%3E%3Cg fill='none' stroke='%2338bdf8' stroke-width='2' opacity='0.14'%3E%3Cpath d='M0 30 C25 15 75 15 100 30 C125 45 175 45 200 30'/%3E%3Cpath d='M0 65 C25 50 75 50 100 65 C125 80 175 80 200 65'/%3E%3C/g%3E%3C/svg%3E")}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Montserrat,sans-serif;background:#0a1f14;color:#fff;overflow-x:hidden}
-.hero{position:relative;height:100vh;background:linear-gradient(rgba(9,26,17,.45),rgba(9,26,17,.72)),var(--leaf-bg) center/180px 180px repeat,url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;display:flex;align-items:center;padding:0 8%;overflow:hidden}
-.hero::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:90px;z-index:1;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0 120 L120 55 L230 95 L360 30 L480 85 L610 45 L730 100 L860 50 L990 95 L1100 40 L1200 90 L1200 120 Z' fill='%23163523'/%3E%3C/svg%3E") bottom/100% 100% no-repeat}
-.hero-content{max-width:700px;position:relative;z-index:2}.tag{color:var(--accent);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
-.hero h1{font-size:clamp(3rem,8vw,7rem);line-height:.95;font-weight:900;text-transform:uppercase;margin-bottom:20px}
-.hero p{font-size:1.2rem;color:#ddd;margin-bottom:30px}.btn{display:inline-block;background:var(--accent-dark);color:#fff;text-decoration:none;padding:16px 32px;font-weight:700}
-.section{padding:90px 8%;background-color:var(--bg-1);background-image:var(--leaf-bg);background-repeat:repeat;background-size:180px 180px}.section:nth-of-type(even){background-color:var(--bg-2)}.section.theme-xavier{background-color:var(--xavier-bg);background-image:var(--crest-bg);background-size:200px 200px}.section.theme-ocean{background-color:var(--ocean-bg);background-image:var(--wave-bg);background-size:200px 100px}.section-title{font-size:3rem;text-transform:uppercase;margin-bottom:30px;font-weight:900}
-.section p{max-width:900px;font-size:1.1rem;line-height:1.8;color:var(--gray)}
-.profile-photo{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid var(--xavier-line);margin-bottom:30px;display:block}
-.cards{margin-top:50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}.card{background:#1a3524}.card img{width:100%;height:220px;object-fit:cover}.card-content{padding:25px}.card-ocean{background-color:var(--ocean-bg);background-image:var(--wave-bg);background-repeat:repeat;background-size:200px 100px}.card-ocean .tag{color:var(--ocean-accent)}.skills{display:flex;flex-wrap:wrap;gap:15px;margin-top:30px}.skill{border:2px solid var(--accent);padding:12px 18px;font-weight:700}.contact{text-align:center}.contact a{color:white;text-decoration:none;margin:0 15px;font-weight:700}.footer{padding:40px;text-align:center;background:#051209;color:#7fa78f}
-</style>
-</head><body>
-<section class="hero"><div class="hero-content"><div class="tag">Student • Builder • Problem Solver</div><h1>Danny<br>Marsh</h1><p>I'm a Cincinnati-based student and a double major in Business Analytics and Marketing at Xavier University.</p><a href="#about" class="btn">Discover More</a></div></section>
-<section class="section theme-xavier" id="about"><img src="photo.jpg" alt="Danny Marsh" class="profile-photo"><h2 class="section-title">About Me</h2><p>I'm a Business Analytics and Marketing double major at Xavier University's Williams College of Business, where I'm also a University Scholars Honors student. I enjoy turning messy information into clear, useful insights, with hands-on experience in Excel, Tableau, basic SQL, and data visualization. On campus, I serve as an X-Path Career Coach, helping students in Xavier's Accessibilities and Disability Resources office build community and work toward their academic and professional goals. I'm currently looking for internship opportunities in analytics, operations, or supply chain.</p></section>
-<section class="section" id="experience"><h2 class="section-title">Experience</h2><div class="cards">
-<div class="card card-ocean"><div class="card-content"><div class="tag" style="margin-bottom:10px">Veterans Village of San Diego · Summer 2026</div><h3>Homeless Ambassador</h3><p>Helped more than 50 people find food, shelter, and housing support, including at Stand Down, a large-scale event serving over 30 people in a single day.</p></div></div>
-<div class="card card-ocean"><div class="card-content"><div class="tag" style="margin-bottom:10px">YMCA of San Diego County · Summer 2026</div><h3>Lifeguard &amp; Camp Counselor</h3><p>Kept guests of all ages safe through active vigilance and emergency training, while sharpening my communication skills working with a wide range of people.</p></div></div>
-<div class="card"><div class="card-content"><div class="tag" style="margin-bottom:10px">Xavier University · 2025–Present</div><h3>X-Path Career Coach</h3><p>Work with students in Xavier's Accessibilities and Disability Resources office to build community and pursue academic and professional goals.</p></div></div>
-<div class="card"><div class="card-content"><div class="tag" style="margin-bottom:10px">Starbucks · 2025–Present</div><h3>Retail Team Member</h3><p>Balance a part-time role alongside coursework and campus involvement.</p></div></div>
-</div></section>
-<section class="section" id="volunteering"><h2 class="section-title">Volunteering</h2><p>Giving back is a core part of who I am — from earning my Eagle Scout rank to volunteering with Veterans Village to support veterans in my community.</p><a href="volunteering.html" class="btn" style="margin-top:30px;">Learn More</a></section>
-<section class="section contact"><h2 class="section-title">Connect</h2><p style="margin:0 auto 30px auto;">Interested in working together or discussing opportunities?</p><a href="#">GitHub</a><a href="https://www.linkedin.com/in/dannymarsh-/" target="_blank" rel="noopener noreferrer" title="https://www.linkedin.com/in/dannymarsh-/">LinkedIn</a><a href="mailto:you@example.com">Email</a></section>
-<footer class="footer">© 2026 Danny Marsh</footer>
-</body></html>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">Danny Marsh</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="volunteering.html">Volunteering</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="tag">Student &bull; Builder &bull; Problem Solver</div>
+    <h1>Danny<br>Marsh</h1>
+    <p>I'm a Cincinnati-based student and a double major in Business Analytics and Marketing at Xavier University.</p>
+    <a href="#about" class="btn">Discover More</a>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <img src="photo.jpg" alt="Danny Marsh" class="profile-photo">
+  <h2 class="section-title">About Me</h2>
+  <p>I'm a Business Analytics and Marketing double major at Xavier University's Williams College of Business, where I'm also a University Scholars Honors student. I enjoy turning messy information into clear, useful insights, with hands-on experience in Excel, Tableau, basic SQL, and data visualization. On campus, I serve as an X-Path Career Coach, helping students in Xavier's Accessibilities and Disability Resources office build community and work toward their academic and professional goals. I'm currently looking for internship opportunities in analytics, operations, or supply chain.</p>
+</section>
+
+<section class="section" id="skills">
+  <h2 class="section-title">Skills</h2>
+  <p>What I've built, and how far along I am with each.</p>
+  <div class="skills-grid">
+    <div class="skill-meter" data-tier="advanced">
+      <svg viewBox="0 0 120 120">
+        <circle class="track" cx="60" cy="60" r="52"/>
+        <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-gold)"/>
+      </svg>
+      <div class="skill-meter-label">
+        <span class="skill-name">Excel</span>
+        <span class="skill-tier">Advanced</span>
+      </div>
+    </div>
+    <div class="skill-meter" data-tier="expert">
+      <svg viewBox="0 0 120 120">
+        <circle class="track" cx="60" cy="60" r="52"/>
+        <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-coral)"/>
+      </svg>
+      <div class="skill-meter-label">
+        <span class="skill-name">Leadership &amp; Coaching</span>
+        <span class="skill-tier">Expert</span>
+      </div>
+    </div>
+    <div class="skill-meter" data-tier="intermediate">
+      <svg viewBox="0 0 120 120">
+        <circle class="track" cx="60" cy="60" r="52"/>
+        <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-purple)"/>
+      </svg>
+      <div class="skill-meter-label">
+        <span class="skill-name">AI-Assisted Development</span>
+        <span class="skill-tier">Intermediate</span>
+      </div>
+    </div>
+    <div class="skill-meter" data-tier="beginner">
+      <svg viewBox="0 0 120 120">
+        <circle class="track" cx="60" cy="60" r="52"/>
+        <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-orange)"/>
+      </svg>
+      <div class="skill-meter-label">
+        <span class="skill-name">Python &amp; pandas</span>
+        <span class="skill-tier">Beginner</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <h2 class="section-title">Experience</h2>
+  <p>Filter by category to see where I've spent my time.</p>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="work">Work</button>
+    <button class="filter-btn" data-filter="leadership">Leadership</button>
+    <button class="filter-btn" data-filter="service">Service</button>
+    <button class="filter-btn" data-filter="scouting">Scouting</button>
+  </div>
+
+  <div class="cards">
+    <div class="card" data-category="leadership" style="--card-accent:var(--sun-coral)">
+      <img src="photo.jpg" alt="Danny Marsh coaching">
+      <div class="card-content">
+        <div class="tag">Xavier University &middot; 2025&ndash;Present</div>
+        <h3>X-Path Career Coach</h3>
+        <p>Work with students in Xavier's Accessibilities and Disability Resources office to build community and pursue academic and professional goals.</p>
+      </div>
+    </div>
+
+    <div class="card" data-category="work" style="--card-accent:var(--sun-orange)">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <div class="card-content">
+        <div class="tag">Starbucks &middot; 2025&ndash;Present</div>
+        <h3>Retail Team Member</h3>
+        <p>Balance a part-time role alongside coursework and campus involvement.</p>
+      </div>
+    </div>
+
+    <div class="card" data-category="work" style="--card-accent:var(--sun-orange)">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <div class="card-content">
+        <div class="tag">YMCA of San Diego County &middot; Summer 2026</div>
+        <h3>Lifeguard &amp; Camp Counselor</h3>
+        <p>Kept guests of all ages safe through active vigilance and emergency training, while sharpening my communication skills working with a wide range of people.</p>
+      </div>
+    </div>
+
+    <div class="card" data-category="service" style="--card-accent:var(--sun-purple)">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+      </div>
+      <div class="card-content">
+        <div class="tag">Veterans Village of San Diego &middot; Summer 2026</div>
+        <h3>Homeless Ambassador</h3>
+        <p>Helped more than 50 people find food, shelter, and housing support, including at Stand Down, a large-scale event serving over 30 people in a single day.</p>
+        <a href="volunteering.html#veterans-village" class="card-link">Read the full story &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card" data-category="scouting" style="--card-accent:var(--sun-gold)">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+      </div>
+      <div class="card-content">
+        <div class="tag">Boy Scouts of America</div>
+        <h3>Eagle Scout</h3>
+        <p>Earned the highest honor in Scouting through years of commitment, leadership, and service &mdash; a foundation that still shapes how I lead today.</p>
+        <a href="volunteering.html#eagle-scout" class="card-link">Read the full story &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact">
+  <h2 class="section-title">Connect</h2>
+  <p style="margin:0 auto 30px auto;">Interested in working together or discussing opportunities?</p>
+  <a href="#">GitHub</a>
+  <a href="https://www.linkedin.com/in/dannymarsh-/" target="_blank" rel="noopener noreferrer" title="https://www.linkedin.com/in/dannymarsh-/">LinkedIn</a>
+  <a href="mailto:you@example.com">Email</a>
+</section>
+
+<footer class="footer">&copy; 2026 Danny Marsh</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
