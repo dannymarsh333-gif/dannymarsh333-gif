@@ -30,26 +30,28 @@ function initSkillMeters() {
 }
 
 function initExperienceFilter() {
-  const buttons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.cards .card');
-  if (!buttons.length || !cards.length) return;
+  document.querySelectorAll('.gallery').forEach(gallery => {
+    const buttons = gallery.querySelectorAll('.filter-btn');
+    const cards = gallery.querySelectorAll('.cards .card');
+    if (!buttons.length || !cards.length) return;
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
 
-      cards.forEach(card => {
-        const matches = filter === 'all' || card.dataset.category === filter;
-        if (matches) {
-          card.classList.remove('card-hidden');
-          card.style.animation = 'none';
-          void card.offsetWidth;
-          card.style.animation = '';
-        } else {
-          card.classList.add('card-hidden');
-        }
+        cards.forEach(card => {
+          const matches = filter === 'all' || card.dataset.category === filter;
+          if (matches) {
+            card.classList.remove('card-hidden');
+            card.style.animation = 'none';
+            void card.offsetWidth;
+            card.style.animation = '';
+          } else {
+            card.classList.add('card-hidden');
+          }
+        });
       });
     });
   });

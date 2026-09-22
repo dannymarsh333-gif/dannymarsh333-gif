@@ -16,19 +16,75 @@
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
+    <a href="#work">Work</a>
+    <a href="#service">Service</a>
     <a href="volunteering.html">Volunteering</a>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="hero-content">
-    <div class="tag">Student &bull; Builder &bull; Problem Solver</div>
-    <h1>Danny<br>Marsh</h1>
-    <p>I'm a Cincinnati-based student and a double major in Business Analytics and Marketing at Xavier University.</p>
-    <a href="#about" class="btn">Discover More</a>
-  </div>
-</section>
+<div class="zone zone-sunset">
+  <div class="zone-bg"></div>
+  <div class="zone-overlay"></div>
+
+  <section class="hero">
+    <div class="wave-layer wave-1"></div>
+    <div class="wave-layer wave-2"></div>
+    <div class="wave-layer wave-3"></div>
+    <div class="hero-content">
+      <div class="tag">Student &bull; Builder &bull; Problem Solver</div>
+      <h1>Danny<br>Marsh</h1>
+      <p>I'm a Cincinnati-based student and a double major in Business Analytics and Marketing at Xavier University.</p>
+      <a href="#about" class="btn">Discover More</a>
+    </div>
+  </section>
+
+  <section class="skills-zone-content" id="skills">
+    <h2 class="section-title">Skills</h2>
+    <p>What I've built, and how far along I am with each.</p>
+    <div class="skills-grid">
+      <div class="skill-meter" data-tier="advanced">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="52"/>
+          <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-gold)"/>
+        </svg>
+        <div class="skill-meter-label">
+          <span class="skill-name">Excel</span>
+          <span class="skill-tier">Advanced</span>
+        </div>
+      </div>
+      <div class="skill-meter" data-tier="expert">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="52"/>
+          <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-coral)"/>
+        </svg>
+        <div class="skill-meter-label">
+          <span class="skill-name">Leadership &amp; Coaching</span>
+          <span class="skill-tier">Expert</span>
+        </div>
+      </div>
+      <div class="skill-meter" data-tier="intermediate">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="52"/>
+          <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-purple)"/>
+        </svg>
+        <div class="skill-meter-label">
+          <span class="skill-name">AI-Assisted Development</span>
+          <span class="skill-tier">Intermediate</span>
+        </div>
+      </div>
+      <div class="skill-meter" data-tier="beginner">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="52"/>
+          <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-orange)"/>
+        </svg>
+        <div class="skill-meter-label">
+          <span class="skill-name">Python &amp; pandas</span>
+          <span class="skill-tier">Beginner</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <section class="section" id="about">
   <img src="photo.jpg" alt="Danny Marsh" class="profile-photo">
@@ -36,122 +92,146 @@
   <p>I'm a Business Analytics and Marketing double major at Xavier University's Williams College of Business, where I'm also a University Scholars Honors student. I enjoy turning messy information into clear, useful insights, with hands-on experience in Excel, Tableau, basic SQL, and data visualization. On campus, I serve as an X-Path Career Coach, helping students in Xavier's Accessibilities and Disability Resources office build community and work toward their academic and professional goals. I'm currently looking for internship opportunities in analytics, operations, or supply chain.</p>
 </section>
 
-<section class="section" id="skills">
-  <h2 class="section-title">Skills</h2>
-  <p>What I've built, and how far along I am with each.</p>
-  <div class="skills-grid">
-    <div class="skill-meter" data-tier="advanced">
-      <svg viewBox="0 0 120 120">
-        <circle class="track" cx="60" cy="60" r="52"/>
-        <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-gold)"/>
-      </svg>
-      <div class="skill-meter-label">
-        <span class="skill-name">Excel</span>
-        <span class="skill-tier">Advanced</span>
+<div class="zone zone-photo zone-professional" id="work">
+  <div class="zone-bg"></div>
+  <div class="zone-overlay"></div>
+  <div class="zone-content">
+    <h2 class="section-title">Work Experience</h2>
+    <p>Filter by category to see where I've spent my time.</p>
+
+    <div class="gallery" data-gallery="work-leadership">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="work">Work</button>
+        <button class="filter-btn" data-filter="leadership">Leadership</button>
       </div>
-    </div>
-    <div class="skill-meter" data-tier="expert">
-      <svg viewBox="0 0 120 120">
-        <circle class="track" cx="60" cy="60" r="52"/>
-        <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-coral)"/>
-      </svg>
-      <div class="skill-meter-label">
-        <span class="skill-name">Leadership &amp; Coaching</span>
-        <span class="skill-tier">Expert</span>
-      </div>
-    </div>
-    <div class="skill-meter" data-tier="intermediate">
-      <svg viewBox="0 0 120 120">
-        <circle class="track" cx="60" cy="60" r="52"/>
-        <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-purple)"/>
-      </svg>
-      <div class="skill-meter-label">
-        <span class="skill-name">AI-Assisted Development</span>
-        <span class="skill-tier">Intermediate</span>
-      </div>
-    </div>
-    <div class="skill-meter" data-tier="beginner">
-      <svg viewBox="0 0 120 120">
-        <circle class="track" cx="60" cy="60" r="52"/>
-        <circle class="fill" cx="60" cy="60" r="52" style="stroke:var(--sun-orange)"/>
-      </svg>
-      <div class="skill-meter-label">
-        <span class="skill-name">Python &amp; pandas</span>
-        <span class="skill-tier">Beginner</span>
+
+      <div class="cards">
+        <div class="card" data-category="leadership" style="--card-accent:var(--sun-coral)">
+          <img src="photo.jpg" alt="Danny Marsh">
+          <div class="card-content">
+            <div class="tag">Xavier University Student Government &middot; August 2024&ndash;Present</div>
+            <h3>Student Government Senator</h3>
+            <p>Represent my peers as an elected Senator in Xavier's Student Government, and serve as Committee Chair of Student Rights and Identities from February 2025 through December 2026.</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="leadership" style="--card-accent:var(--sun-coral)">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.5 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="tag">Xavier University &middot; 2025&ndash;Present</div>
+            <h3>X-Path Career Coach</h3>
+            <p>Work with students in Xavier's Accessibilities and Disability Resources office to build community and pursue academic and professional goals.</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="work" style="--card-accent:var(--sun-orange)">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="tag">Starbucks &middot; 2025&ndash;Present</div>
+            <h3>Retail Team Member</h3>
+            <p>Balance a part-time role alongside coursework and campus involvement.</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="work" style="--card-accent:var(--sun-orange)">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="tag">YMCA of San Diego County &middot; Summer 2026</div>
+            <h3>Lifeguard &amp; Camp Counselor</h3>
+            <p>Kept guests of all ages safe through active vigilance and emergency training, while sharpening my communication skills working with a wide range of people.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<section class="section" id="experience">
-  <h2 class="section-title">Experience</h2>
-  <p>Filter by category to see where I've spent my time.</p>
+<div class="zone zone-photo zone-forest" id="service">
+  <div class="zone-bg"></div>
+  <div class="zone-overlay"></div>
+  <div class="tree tree-1"></div>
+  <div class="tree tree-2"></div>
+  <div class="tree tree-3"></div>
+  <div class="zone-content">
+    <h2 class="section-title">Nature &amp; Service</h2>
+    <p>Giving back is a core part of who I am. Filter by category to see the community work I've done.</p>
 
-  <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="work">Work</button>
-    <button class="filter-btn" data-filter="leadership">Leadership</button>
-    <button class="filter-btn" data-filter="service">Service</button>
-    <button class="filter-btn" data-filter="scouting">Scouting</button>
+    <div class="gallery" data-gallery="service-scouting">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="service">Service</button>
+        <button class="filter-btn" data-filter="scouting">Scouting</button>
+      </div>
+
+      <div class="cards">
+        <div class="card" data-category="service" style="--card-accent:var(--sun-purple)">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="tag">Veterans Village of San Diego &middot; Summer 2026</div>
+            <h3>Homeless Ambassador</h3>
+            <p>Helped more than 50 people find food, shelter, and housing support, including at Stand Down, a large-scale event serving over 30 people in a single day.</p>
+            <a href="volunteering.html#veterans-village" class="card-link">Read the full story &rarr;</a>
+          </div>
+        </div>
+
+        <div class="card" data-category="service" style="--card-accent:var(--sun-purple)">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="tag">Father Joe's Villages &middot; June 2017&ndash;April 2024</div>
+            <h3>Volunteer</h3>
+            <p>Volunteered consistently for nearly seven years, averaging about six hours a month to support Father Joe's Villages' work serving people experiencing homelessness in San Diego.</p>
+          </div>
+        </div>
+
+        <div class="card" data-category="scouting" style="--card-accent:var(--sun-gold)">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="tag">Boy Scouts of America &middot; May&ndash;August 2019</div>
+            <h3>Eagle Scout</h3>
+            <p>Earned the highest honor in Scouting by leading the ground-up build of a new playroom at the Ronald McDonald House near Rady Children's Hospital in San Diego, in partnership with the San Diego Padres. Designed and built the furniture myself, including a two-level octagonal bookshelf, and fundraised and collected books to fill it.</p>
+            <a href="volunteering.html#eagle-scout" class="card-link">Read the full story &rarr;</a>
+          </div>
+        </div>
+
+        <div class="card" data-category="scouting" style="--card-accent:var(--sun-gold)">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="tag">Boy Scouts of America &middot; 2015&ndash;2022</div>
+            <h3>Trail Path Rebuilding</h3>
+            <p>Worked on trail rebuilding as part of Boy Scouts from 2015 through 2022 &mdash; a way to get outside in nature, help out the people who'd use the trails after me, and stay connected with my troop when COVID made it impossible to meet indoors.</p>
+            <a href="volunteering.html#trail-rebuilding" class="card-link">Read the full story &rarr;</a>
+          </div>
+        </div>
+
+        <div class="card" data-category="service" style="--card-accent:var(--sun-purple)">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </div>
+          <div class="card-content">
+            <div class="tag">Feeding San Diego &middot; June 2026</div>
+            <h3>Volunteer</h3>
+            <p>Volunteered at Feeding San Diego in June 2026, where I helped package over 1,200 meals for families across the San Diego area.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="cards">
-    <div class="card" data-category="leadership" style="--card-accent:var(--sun-coral)">
-      <img src="photo.jpg" alt="Danny Marsh coaching">
-      <div class="card-content">
-        <div class="tag">Xavier University &middot; 2025&ndash;Present</div>
-        <h3>X-Path Career Coach</h3>
-        <p>Work with students in Xavier's Accessibilities and Disability Resources office to build community and pursue academic and professional goals.</p>
-      </div>
-    </div>
-
-    <div class="card" data-category="work" style="--card-accent:var(--sun-orange)">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-      </div>
-      <div class="card-content">
-        <div class="tag">Starbucks &middot; 2025&ndash;Present</div>
-        <h3>Retail Team Member</h3>
-        <p>Balance a part-time role alongside coursework and campus involvement.</p>
-      </div>
-    </div>
-
-    <div class="card" data-category="work" style="--card-accent:var(--sun-orange)">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-      </div>
-      <div class="card-content">
-        <div class="tag">YMCA of San Diego County &middot; Summer 2026</div>
-        <h3>Lifeguard &amp; Camp Counselor</h3>
-        <p>Kept guests of all ages safe through active vigilance and emergency training, while sharpening my communication skills working with a wide range of people.</p>
-      </div>
-    </div>
-
-    <div class="card" data-category="service" style="--card-accent:var(--sun-purple)">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
-      </div>
-      <div class="card-content">
-        <div class="tag">Veterans Village of San Diego &middot; Summer 2026</div>
-        <h3>Homeless Ambassador</h3>
-        <p>Helped more than 50 people find food, shelter, and housing support, including at Stand Down, a large-scale event serving over 30 people in a single day.</p>
-        <a href="volunteering.html#veterans-village" class="card-link">Read the full story &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card" data-category="scouting" style="--card-accent:var(--sun-gold)">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-      </div>
-      <div class="card-content">
-        <div class="tag">Boy Scouts of America</div>
-        <h3>Eagle Scout</h3>
-        <p>Earned the highest honor in Scouting through years of commitment, leadership, and service &mdash; a foundation that still shapes how I lead today.</p>
-        <a href="volunteering.html#eagle-scout" class="card-link">Read the full story &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
 <section class="section contact">
   <h2 class="section-title">Connect</h2>
