@@ -57,7 +57,33 @@ function initExperienceFilter() {
   });
 }
 
+const MOTION_SECONDS = 10;
+
+function initZoneMotion() {
+  const zones = document.querySelectorAll('.zone');
+  if (!zones.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const timers = new Map();
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const zone = entry.target;
+      clearTimeout(timers.get(zone));
+      if (entry.isIntersecting) {
+        zone.classList.add('in-motion');
+        timers.set(zone, setTimeout(() => zone.classList.remove('in-motion'), MOTION_SECONDS * 1000));
+      } else {
+        zone.classList.remove('in-motion');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  zones.forEach(zone => observer.observe(zone));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initZoneMotion();
   initSkillMeters();
   initExperienceFilter();
 });
