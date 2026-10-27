@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Lock-In Planner</title>
+<style>
+:root{
+  --sun-gold:#ffb627; --sun-orange:#ff7b39; --sun-coral:#ff5177; --sun-purple:#8338ec;
+  --bg:#1b1030; --panel:#271846; --line:#3d2a68;
+  --text:#ffffff; --muted:#d9c9ee;
+  --class:#5a2bb8; --meal:#3a2a5e; --career:#2ec4b6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.4}
+header,main{max-width:1200px;margin:0 auto;padding:0 16px}
+header{padding-top:24px;padding-bottom:8px}
+h1{margin:0;font-size:1.8rem;background:linear-gradient(90deg,var(--sun-gold),var(--sun-coral));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);margin:4px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0;font-size:.85rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.l-class::before{background:var(--class)} .l-deep::before{background:var(--sun-gold)} .l-light::before{background:var(--sun-orange)} .l-meal::before{background:var(--meal)} .l-career::before{background:var(--career)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.grid{display:grid;grid-template-columns:48px repeat(7,minmax(96px,1fr));min-width:760px}
+.head{padding:8px 4px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);background:var(--panel)}
+.head.today{color:var(--sun-gold)}
+.timecol,.day{position:relative}
+.timecol div{position:absolute;right:6px;font-size:.7rem;color:var(--muted);transform:translateY(-50%)}
+.day{border-left:1px solid var(--line);background-image:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% 48px}
+.day.today{background-color:rgba(255,182,39,.08)}
+.blk{position:absolute;left:3px;right:3px;border-radius:6px;padding:3px 6px;font-size:.75rem;overflow:hidden}
+.blk b{display:block;font-size:.78rem}
+.class{background:var(--class);z-index:2}
+.meal{background:var(--meal);color:var(--muted);z-index:1}
+.career{background:var(--career);color:#06231f;z-index:2}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.focus{background:var(--sun-gold);color:#2a1500;cursor:pointer;z-index:1;border:0;text-align:left;font:inherit;font-size:.75rem}
+.focus.light{background:var(--sun-orange)}
+.focus:hover{outline:2px solid #fff}
+.now{position:absolute;left:0;right:0;height:2px;background:var(--sun-coral);z-index:5}
+.now::before{content:"";position:absolute;left:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--sun-coral)}
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:20px 0 40px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.panel h2{margin:0 0 10px;font-size:1.1rem;color:var(--sun-gold)}
+form.task{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+form.task input{width:100%}
+form.task .wide{grid-column:1/-1}
+input,button{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--text)}
+button{cursor:pointer;background:linear-gradient(90deg,#b83f08,var(--sun-purple));border:0;font-weight:600}
+button.ghost{background:transparent;border:1px solid var(--line);color:var(--muted);font-weight:400}
+button:focus-visible,input:focus-visible,.focus:focus-visible{outline:3px solid #fff;outline-offset:2px}
+ul{list-style:none;margin:0;padding:0}
+li.t{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+li.t .info{flex:1}
+li.t.done .name{text-decoration:line-through;color:var(--muted)}
+li.t small{display:block;color:var(--muted)}
+li.t.late small.due{color:var(--sun-coral)}
+li.t button{padding:8px 12px;font-size:.85rem}
+li.t input[type=checkbox]{width:22px;height:22px}
+.timer{font-size:3rem;font-weight:700;text-align:center;font-variant-numeric:tabular-nums}
+.timer-mode{text-align:center;color:var(--muted);margin-bottom:8px}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.empty{color:var(--muted)}
+.rules{color:var(--muted);font-size:.9rem;margin:0;padding-left:18px;list-style:disc}
+@media (max-width:600px){form.task{grid-template-columns:1fr}}
+@media print{
+  @page{size:landscape;margin:10mm}
+  body{background:#fff;color:#000}
+  header .sub,.panels,.noprint{display:none}
+  h1{color:#000;background:none}
+  .scroll{border:0;overflow:visible;background:#fff}
+  .grid{min-width:0;zoom:.62}
+  .now{display:none}
+  .head{background:#fff;color:#000}
+  .timecol div{color:#000}
+  .class{background:#c9b6f0;color:#000}.meal{background:#eee;color:#333}.career{background:#9ee6dd;color:#000}
+  .focus{background:#ffd873;color:#000}.focus.light{background:#ffc79e}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Weekly Lock-In Planner</h1>
+  <p class="sub">Your classes are fixed. The gold and orange blocks are your suggested homework time. Click a block to dismiss it.</p>
+  <div class="legend">
+    <span class="l-class">Class / meetings</span>
+    <span class="l-deep">Deep focus (90+ min)</span>
+    <span class="l-light">Light focus</span>
+    <span class="l-meal">Meals</span>
+    <span class="l-career">Internships &amp; future planning</span>
+    <button class="ghost noprint" id="restore" type="button">Restore dismissed blocks</button>
+    <button class="ghost noprint" onclick="window.print()" type="button">Print week</button>
+  </div>
+</header>
+
+<main>
+  <p class="noprint" id="undoMsg" role="status" style="color:var(--muted);margin:0 0 8px;min-height:1.4em"></p>
+  <div class="scroll"><div class="grid" id="grid" role="group" aria-label="Weekly calendar"></div></div>
+
+  <div class="panels">
+    <section class="panel">
+      <h2>Homework to do</h2>
+      <form class="task" id="taskForm">
+        <input class="wide" id="tName" placeholder="What is the assignment?" required maxlength="120" aria-label="Assignment">
+        <input id="tCourse" placeholder="Course" maxlength="40" aria-label="Course">
+        <input id="tDue" type="date" aria-label="Due date">
+        <button class="wide" type="submit">Add task</button>
+      </form>
+      <ul id="tasks"></ul>
+      <div class="row noprint">
+        <button class="ghost" id="export" type="button">Export tasks</button>
+        <button class="ghost" id="import" type="button">Import tasks</button>
+        <input id="importFile" type="file" accept="application/json" hidden>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Lock-in timer</h2>
+      <div class="timer-mode" id="mode">Focus: 50 minutes</div>
+      <div class="timer" id="clock" role="timer" aria-live="off">50:00</div>
+      <div class="sr" id="announce" aria-live="polite"></div>
+      <div class="row">
+        <button id="start" type="button">Start</button>
+        <button class="ghost" id="reset" type="button">Reset</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>How the blocks are chosen</h2>
+      <ul class="rules">
+        <li>Focus time runs 8 am to 10 pm, leaving a wind-down hour before 11 pm.</li>
+        <li>15-minute buffer before and after every class.</li>
+        <li>Lunch 12-1 and dinner 6-7 stay free.</li>
+        <li>Each block is 1 to 3 cycles of 50 minutes on, 10 off, matching the timer.</li>
+        <li>Homework is capped at 4 hours on weekdays and 5 hours on weekends, using the longest blocks first, so the week stays doable.</li>
+        <li>Teal blocks are protected time for internship applications and planning your future. They sit early in the week (Mon to Thu) so Friday is for finishing, not starting.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<script>
+// ----- Config: edit these to change the schedule -----
+const DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const EVENTS = [
+  {day:0, start:'09:00', end:'11:00', name:'Class'},
+  {day:1, start:'10:00', end:'17:15', name:'Class'},
+  {day:2, start:'09:00', end:'12:00', name:'Class'},
+  {day:3, start:'10:00', end:'17:15', name:'Class'},
+  {day:4, start:'10:00', end:'15:00', name:'Meetings'}
+];
+const MEALS = [{start:'12:00', end:'13:00', name:'Lunch'}, {start:'18:00', end:'19:00', name:'Dinner'}];
+// Protected time for internship applications and planning ahead, early in the week so Friday is for finishing
+const CAREER = [
+  {day:0, start:'13:00', end:'14:30', name:'Internships & future planning'},
+  {day:1, start:'19:00', end:'20:00', name:'Internships & future planning'},
+  {day:2, start:'13:00', end:'14:30', name:'Internships & future planning'},
+  {day:3, start:'19:00', end:'20:00', name:'Internships & future planning'}
+];
+const CFG = {
+  gridStart:7*60, gridEnd:23*60,   // calendar drawn 7 am to 11 pm
+  focusStart:8*60, focusEnd:22*60, // allowed focus window
+  buffer:15, breakBetween:30,
+  maxCycles:3,                     // each cycle = 50 min focus + 10 min break (matches the timer)
+  capWeekday:240, capWeekend:300,  // max homework minutes per day
+  deepAt:100
+};
+const PPM = 0.8; // pixels per minute (48px per hour)
+
+// ----- Helpers -----
+const $ = id => document.getElementById(id);
+const toMin = t => { const [h,m] = t.split(':').map(Number); return h*60+m; };
+const fmt = m => { const h=Math.floor(m/60), mm=m%60, ap=h>=12?'pm':'am'; return ((h+11)%12+1)+(mm?':'+String(mm).padStart(2,'0'):'')+ap; };
+const y = m => (m-CFG.gridStart)*PPM;
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+const todayIdx = () => (new Date().getDay()+6)%7;
+const localDate = (d=new Date()) => d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+
+// ----- Focus block suggestions -----
+function focusBlocks(day){
+  const busy = EVENTS.filter(e=>e.day===day).map(e=>[toMin(e.start)-CFG.buffer, toMin(e.end)+CFG.buffer])
+    .concat(CAREER.filter(c=>c.day===day).map(c=>[toMin(c.start), toMin(c.end)]))
+    .concat(MEALS.map(m=>[toMin(m.start), toMin(m.end)]))
+    .sort((a,b)=>a[0]-b[0]);
+  const gaps = []; let cur = CFG.focusStart;
+  for(const [s,e] of busy){
+    if(s>cur) gaps.push([cur, Math.min(s, CFG.focusEnd)]);
+    cur = Math.max(cur, e);
+  }
+  if(cur<CFG.focusEnd) gaps.push([cur, CFG.focusEnd]);
+  // Cut each gap into blocks of whole 50/10 cycles (a block of n cycles lasts n*60-10 minutes)
+  const all = [];
+  for(const [gs,ge] of gaps){
+    let s = gs;
+    for(;;){
+      const cycles = Math.min(CFG.maxCycles, Math.floor((ge-s+10)/60));
+      if(cycles<1) break;
+      const e = s + cycles*60 - 10;
+      all.push({day, start:s, end:e, cycles, id:day+'-'+s});
+      s = e + CFG.breakBetween;
+    }
+  }
+  // Keep the longest blocks until the daily cap is reached, so the week stays doable
+  let budget = day>=5 ? CFG.capWeekend : CFG.capWeekday;
+  const kept = [];
+  for(const b of all.slice().sort((a,b)=>(b.end-b.start)-(a.end-a.start) || a.start-b.start)){
+    const cycles = Math.min(b.cycles, Math.floor((budget+10)/60));   // shrink the last block to fit what is left
+    if(cycles<1) continue;
+    b.cycles = cycles; b.end = b.start + cycles*60 - 10;
+    kept.push(b); budget -= b.end-b.start;
+  }
+  return kept.sort((a,b)=>a.start-b.start);
+}
+
+// ----- Render calendar -----
+function render(){
+  const grid = $('grid'), hidden = store.get('hiddenBlocks', []), today = todayIdx();
+  const H = (CFG.gridEnd-CFG.gridStart)*PPM;
+  grid.replaceChildren();
+  const corner = document.createElement('div'); corner.className='head'; grid.append(corner);
+  DAYS.forEach((d,i)=>{ const h=document.createElement('div'); h.className='head'+(i===today?' today':''); h.textContent=i===today?d+' (today)':d; grid.append(h); });
+
+  const tc = document.createElement('div'); tc.className='timecol'; tc.style.height=H+'px';
+  for(let m=CFG.gridStart; m<=CFG.gridEnd; m+=60){ const l=document.createElement('div'); l.style.top=y(m)+'px'; l.textContent=fmt(m); tc.append(l); }
+  grid.append(tc);
+
+  DAYS.forEach((d,i)=>{
+    const col = document.createElement('div'); col.className='day'+(i===today?' today':''); col.style.height=H+'px';
+    const add = (cls, s, e, title, sub, tag='div') => {
+      const b = document.createElement(tag); b.className='blk '+cls;
+      b.style.top=y(s)+'px'; b.style.height=Math.max(y(e)-y(s)-2, 14)+'px';
+      const t = document.createElement('b'); t.textContent=title; b.append(t);
+      if(sub){ b.append(document.createTextNode(sub)); }
+      col.append(b); return b;
+    };
+    MEALS.forEach(m=>add('meal', toMin(m.start), toMin(m.end), m.name));
+    EVENTS.filter(e=>e.day===i).forEach(e=>add('class', toMin(e.start), toMin(e.end), e.name, fmt(toMin(e.start))+' - '+fmt(toMin(e.end))));
+    CAREER.filter(c=>c.day===i).forEach(c=>add('career', toMin(c.start), toMin(c.end), c.name, fmt(toMin(c.start))+' - '+fmt(toMin(c.end))));
+    focusBlocks(i).filter(b=>!hidden.includes(b.id)).forEach(b=>{
+      const deep = b.end-b.start >= CFG.deepAt;
+      const label = (deep?'Deep focus':'Light focus')+' - '+b.cycles+(b.cycles>1?' cycles':' cycle');
+      const el = add('focus'+(deep?'':' light'), b.start, b.end, label, fmt(b.start)+' - '+fmt(b.end), 'button');
+      el.type='button'; el.title='Click to dismiss this block';
+      el.setAttribute('aria-label', label+', '+DAYS[i]+' '+fmt(b.start)+' to '+fmt(b.end)+'. Activate to dismiss.');
+      el.onclick = () => {
+        store.set('hiddenBlocks', hidden.concat(b.id)); render();
+        const msg = $('undoMsg'); msg.textContent = 'Dismissed '+DAYS[i]+' '+fmt(b.start)+'. ';
+        const u = document.createElement('button'); u.type='button'; u.className='ghost'; u.textContent='Undo';
+        u.onclick = () => { store.set('hiddenBlocks', hidden); render(); $('undoMsg').textContent=''; };
+        msg.append(u);
+      };
+    });
+    if(i===today){ const n=document.createElement('div'); n.className='now'; n.id='nowLine'; col.append(n); }
+    grid.append(col);
+  });
+  placeNow();
+}
+function placeNow(){
+  const n = $('nowLine'); if(!n) return;
+  const d = new Date(), m = d.getHours()*60+d.getMinutes();
+  if(m<CFG.gridStart || m>CFG.gridEnd){ n.style.display='none'; return; }
+  n.style.display='block'; n.style.top=y(m)+'px';
+}
+$('restore').onclick = () => { store.set('hiddenBlocks', []); $('undoMsg').textContent=''; render(); };
+setInterval(placeNow, 60000);
+
+// ----- Tasks -----
+let tasks = store.get('tasks', []);
+if(!Array.isArray(tasks)) tasks = [];
+tasks = tasks.filter(t => t && typeof t.name==='string').map(t => ({name:t.name, course:String(t.course||''), due:String(t.due||''), done:!!t.done}));
+function saveTasks(){ store.set('tasks', tasks); renderTasks(); }
+function renderTasks(){
+  const ul = $('tasks'); ul.replaceChildren();
+  if(!tasks.length){ const li=document.createElement('li'); li.className='empty'; li.textContent='Nothing yet. Add your first assignment above.'; ul.append(li); return; }
+  const todayStr = localDate();
+  const sorted = tasks.slice().sort((a,b)=> (a.done-b.done) || (a.due||'9999').localeCompare(b.due||'9999'));
+  for(const t of sorted){
+    const li = document.createElement('li'); li.className='t'+(t.done?' done':'')+(!t.done && t.due && t.due<todayStr?' late':'');
+    const cb = document.createElement('input'); cb.type='checkbox'; cb.checked=t.done; cb.setAttribute('aria-label','Mark done: '+t.name);
+    cb.onchange = () => { t.done = cb.checked; saveTasks(); };
+    const info = document.createElement('div'); info.className='info';
+    const nm = document.createElement('span'); nm.className='name'; nm.textContent=t.name;
+    const sm = document.createElement('small'); sm.className='due';
+    sm.textContent = [t.course, t.due ? 'Due '+new Date(t.due+'T00:00').toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}) : ''].filter(Boolean).join(' - ');
+    info.append(nm, sm);
+    const del = document.createElement('button'); del.type='button'; del.className='ghost'; del.textContent='Delete'; del.setAttribute('aria-label','Delete '+t.name);
+    del.onclick = () => { tasks = tasks.filter(x=>x!==t); saveTasks(); };
+    li.append(cb, info, del); ul.append(li);
+  }
+}
+$('taskForm').onsubmit = e => {
+  e.preventDefault();
+  tasks.push({name:$('tName').value.trim(), course:$('tCourse').value.trim(), due:$('tDue').value, done:false});
+  e.target.reset(); saveTasks();
+};
+$('export').onclick = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(tasks,null,2)],{type:'application/json'}));
+  a.download = 'planner-tasks.json'; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
+$('import').onclick = () => $('importFile').click();
+$('importFile').onchange = e => {
+  const f = e.target.files[0]; if(!f) return;
+  if(tasks.length && !confirm('Importing replaces your current '+tasks.length+' task(s). Continue?')){ e.target.value=''; return; }
+  f.text().then(txt => {
+    const data = JSON.parse(txt);
+    if(!Array.isArray(data)) throw 0;
+    tasks = data.filter(t=>t && typeof t.name==='string').map(t=>({name:t.name.slice(0,120), course:String(t.course||'').slice(0,40), due:/^\d{4}-\d\d-\d\d$/.test(t.due)?t.due:'', done:!!t.done}));
+    saveTasks();
+  }).catch(()=>alert('That file is not a valid task export.'));
+  e.target.value='';
+};
+
+// ----- Timer (50 focus / 10 break) -----
+const FOCUS = 50*60, BREAK = 10*60;
+let mode='focus', left=FOCUS, tick=null, endAt=0, audio=null;
+function drawTimer(){
+  const t = String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');
+  $('clock').textContent = t;
+  $('mode').textContent = mode==='focus' ? 'Focus: 50 minutes' : 'Break: 10 minutes';
+  document.title = tick ? t+' '+(mode==='focus'?'Focus':'Break')+' - Lock-In Planner' : 'Weekly Lock-In Planner';
+}
+function beep(){
+  try{
+    audio = audio || new AudioContext();
+    const o = audio.createOscillator(), g = audio.createGain();
+    o.connect(g); g.connect(audio.destination); g.gain.value = 0.1; o.frequency.value = 880;
+    o.start(); o.stop(audio.currentTime+0.4);
+  }catch(e){}
+}
+$('start').onclick = () => {
+  if(tick){ clearInterval(tick); tick=null; $('start').textContent='Start'; drawTimer(); return; }
+  try{ audio = audio || new AudioContext(); }catch(e){}   // created on a click so browsers allow sound
+  $('start').textContent='Pause';
+  endAt = Date.now() + left*1000;                          // end time, so background tabs stay accurate
+  tick = setInterval(()=>{
+    left = Math.max(0, Math.ceil((endAt-Date.now())/1000));
+    if(left===0){
+      mode = mode==='focus'?'break':'focus'; left = mode==='focus'?FOCUS:BREAK; endAt = Date.now()+left*1000;
+      beep(); $('announce').textContent = mode==='focus' ? 'Break over. Focus time.' : 'Focus done. Take a 10 minute break.';
+    }
+    drawTimer();
+  }, 250);
+};
+$('reset').onclick = () => { clearInterval(tick); tick=null; mode='focus'; left=FOCUS; $('start').textContent='Start'; drawTimer(); };
+
+render(); renderTasks(); drawTimer();
+</script>
+</body>
+</html>
