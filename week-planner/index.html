@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weekly Lock-In Planner</title>
+<title>Lock In Calendar</title>
 <style>
 :root{
   --sun-gold:#ffb627; --sun-orange:#ff7b39; --sun-coral:#ff5177; --sun-purple:#8338ec;
@@ -81,7 +81,7 @@ li.t input[type=checkbox]{width:22px;height:22px}
 </head>
 <body>
 <header>
-  <h1>Weekly Lock-In Planner</h1>
+  <h1>Lock In Calendar</h1>
   <p class="sub">Your classes are fixed. The gold and orange blocks are your suggested homework time. Click a block to dismiss it.</p>
   <div class="legend">
     <span class="l-class">Class / meetings</span>
@@ -323,7 +323,7 @@ function drawTimer(){
   const t = String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');
   $('clock').textContent = t;
   $('mode').textContent = mode==='focus' ? 'Focus: 50 minutes' : 'Break: 10 minutes';
-  document.title = tick ? t+' '+(mode==='focus'?'Focus':'Break')+' - Lock-In Planner' : 'Weekly Lock-In Planner';
+  document.title = tick ? t+' '+(mode==='focus'?'Focus':'Break')+' - Lock In Calendar' : 'Lock In Calendar';
 }
 function beep(){
   try{
